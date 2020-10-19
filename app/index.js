@@ -1,17 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import About from './Components/About';
+import Home from './Components/Home';
+import Contact from './Components/Contact';
+
 import './index.css';
 
 class App extends React.Component{
-    render(){
-        return(<React.Fragment>
-            <img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+    render(){return(<Router>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
 
-            <p>Hello World! I'm rjmonna. This is my website!</p>
-
-            <p>Building websites is fun! You should try it too.</p>
-        </React.Fragment>)
-    }
+        <div>
+            <Switch>
+                <Route path="/about">
+                    <About />
+                </Route>
+                <Route path="/contact">
+                    <Contact />
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
+        </div>
+    </Router>)}
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+   <App />,
+   document.getElementById('app')
+)
