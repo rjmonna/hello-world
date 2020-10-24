@@ -10,6 +10,7 @@ import {
 import About from './Components/About';
 import Home from './Components/Home';
 import Contact from './Components/Contact';
+import Experiments from './Components/Experiments'
 
 import './index.css';
 
@@ -19,6 +20,9 @@ class App extends React.Component{
           <ul>
             <li>
               <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/experiments">Experiments</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -31,6 +35,9 @@ class App extends React.Component{
 
         <div>
             <Switch>
+                <Route path="/experiments">
+                    <Experiments />
+                </Route>
                 <Route path="/about">
                     <About />
                 </Route>
