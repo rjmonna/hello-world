@@ -14,7 +14,7 @@ class Experiments extends React.Component{
                 <nav>
                     <ul>
                         <li>
-                            <Link to={`/experiments/afakelist`}>A fake list</Link>
+                            <Link to={process.env.API_URL + `/experiments/afakelist`}>A fake list</Link>
                         </li>
                     </ul>
                 </nav>

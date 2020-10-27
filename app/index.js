@@ -19,16 +19,16 @@ class App extends React.Component{
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to={process.env.API_URL + "/"}>Home</Link>
             </li>
             <li>
-              <Link to="/experiments">Experiments</Link>
+              <Link to={process.env.API_URL + "/experiments"}>Experiments</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to={process.env.API_URL + "/about"}>About</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to={process.env.API_URL + "/contact"}>Contact</Link>
             </li>
           </ul>
         </nav>
