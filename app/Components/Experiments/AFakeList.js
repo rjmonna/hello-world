@@ -11,9 +11,9 @@ class AFakeList extends React.Component{
     }
 
     componentDidMount() {
-/*         fetch("https://fakerapi.it/api/v1/images?_quantity=10")
-            .then(
-                (result) => {
+        fetch("https://fakerapi.it/api/v1/images?_quantity=10")
+ /*           .then(
+                 (result) => {
                     this.setState({
                         isLoaded: true,
                         items: result.data
