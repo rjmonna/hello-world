@@ -1,5 +1,6 @@
-var path = require('path');
-var HtmlWebpackPlugin =  require('html-webpack-plugin');
+const path = require('path');
+const { CleanWebpackPlugin } =  require('clean-webpack-plugin');
+const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 
@@ -27,17 +28,11 @@ module.exports = () => {
         },
         mode:'development',
         plugins : [
+            new CleanWebpackPlugin(),
             new HtmlWebpackPlugin ({
                 template : 'app/index.html'
             }),
             new webpack.DefinePlugin(envKeys)
         ],
-        // to mimic GitHub Pages serving 404.html for all paths
-        // and test spa-github-pages redirect in dev
-        devServer: {
-            historyApiFallback: {
-            rewrites: [{ from: /\//, to: '/404.html' }],
-            },
-        },
     }
 }

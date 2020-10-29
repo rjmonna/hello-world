@@ -11,8 +11,8 @@
   },
   "scripts": {
     "create": "webpack",
-    "start": "webpack serve",
-    "build": "webpack",
+    "start": "webpack serve --config webpack.common.js",
+    "build": "webpack --config webpack.common.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -44,7 +44,8 @@
     "typescript": "^4.0.3",
     "webpack": "^5.1.3",
     "webpack-cli": "^4.0.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "react": "^16.14.0",

@@ -15,7 +15,12 @@ import Experiments from './Components/Experiments'
 import './index.css';
 
 class App extends React.Component{
-    render(){return(<Router>
+    render(){
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Looks like we are in development mode!')
+      }
+
+      return(<Router>
         <nav>
           <ul>
             <li>
