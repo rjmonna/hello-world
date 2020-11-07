@@ -18,7 +18,8 @@ module.exports = () => {
         entry : './app/index.js',
         output : {
             path : path.resolve(__dirname , 'dist'),
-            filename: 'index_bundle.js'
+            filename: '[name].js',
+            sourceMapFilename: "[name].js.map"
         },
         module : {
             rules : [
@@ -26,6 +27,7 @@ module.exports = () => {
                 {test : /\.css$/, use:['style-loader', 'css-loader']}
             ]
         },
+        devtool : 'inline-source-map',
         mode:'development',
         plugins : [
             new CleanWebpackPlugin(),
