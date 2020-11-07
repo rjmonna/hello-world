@@ -6,15 +6,20 @@ class AFakeList extends React.Component{
         this.state = {
             error: null,
             isLoaded: false,
+            numberOfItems: 10,
             items: {}
         };
     }
 
-    componentDidMount() {        
-       fetch("https://fakerapi.it/api/v1/images?_quantity=10")
+    componentDidMount() {
+        this.updateList();
+    }
+
+    updateList() {
+        fetch(`https://fakerapi.it/api/v1/images?_quantity=${this.state.numberOfItems}`)
             .then(res => res.json())
             .then(
-                 (result) => {
+                (result) => {
                     this.setState({
                         isLoaded: true,
                         items: result
@@ -26,7 +31,11 @@ class AFakeList extends React.Component{
                         isLoaded: true
                     })
                 }
-            )
+            )}
+
+    handleChangeNumberOfItems(e) {
+        this.setState( { numberOfItems: Number(e.target.value) })
+        this.updateList()
     }
 
     render(){
@@ -38,11 +47,14 @@ class AFakeList extends React.Component{
             return <div>Loading...</div>
         } else {
             return (
-                <ul>
-                    {items.data.map(item => (
-                        <li key={item.title}>{item.title}</li>
-                    ))}
-                </ul>
+                <React.Fragment>
+                    <ul>
+                        {items.data.map(item => (
+                            <li key={item.title}>{item.title}</li>
+                        ))}
+                    </ul><br />
+                    <label htmlFor="numberOfItems">Number of items</label><input id="numberOfItems" defaultValue="10" onChange={this.handleChangeNumberOfItems.bind(this)}></input>
+                </React.Fragment>
             )
         }
     }

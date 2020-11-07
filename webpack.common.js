@@ -15,11 +15,16 @@ module.exports = () => {
   }, {});
 
     return {
+        node: {
+            global: false,
+            __filename: false,
+            __dirname: false,
+        },
         entry : './app/index.js',
         output : {
             path : path.resolve(__dirname , 'dist'),
-            filename: '[name].js',
-            sourceMapFilename: "[name].js.map"
+            filename: 'bundle.js',
+            sourceMapFilename: "bundle.js.map"
         },
         module : {
             rules : [
@@ -36,5 +41,17 @@ module.exports = () => {
             }),
             new webpack.DefinePlugin(envKeys)
         ],
+        devServer: {
+            inline: true,
+            contentBase: path.join(__dirname, 'dist'),
+            compress: true,
+            port: 8080,
+            watchOptions: {
+                index: 'index.html',
+                open: true,
+                poll: true,
+                watchContentBase: true
+            }
+        }        
     }
 }

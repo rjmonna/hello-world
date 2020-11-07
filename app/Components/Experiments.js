@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import AFakeList from './Experiments/AFakeList';
+import AnEditableList from './Experiments/AnEditableList';
 
 class Experiments extends React.Component{
     render(){
@@ -16,12 +17,18 @@ class Experiments extends React.Component{
                         <li>
                             <Link to={process.env.API_URL + `/experiments/afakelist`}>A fake list</Link>
                         </li>
+                        <li>
+                            <Link to={process.env.API_URL + `/experiments/aneditablelist`}>An editable list</Link>
+                        </li>
                     </ul>
                 </nav>
             <div>
                 <Switch>
                     <Route path={`/experiments/afakelist`}>
                         <AFakeList />
+                    </Route>
+                    <Route path={`/experiments/aneditablelist`}>
+                        <AnEditableList />
                     </Route>
                 </Switch>
             </div>
