@@ -15,10 +15,10 @@ class Experiments extends React.Component{
                 <nav>
                     <ul>
                         <li>
-                            <Link to={process.env.API_URL + `/experiments/afakelist`}>A fake list</Link>
+                        <Link to={process.env.APP_DIR + `/experiments/afakelist`}>A fake list</Link>
                         </li>
                         <li>
-                            <Link to={process.env.API_URL + `/experiments/aneditablelist`}>An editable list</Link>
+                        <Link to={process.env.APP_DIR + `/experiments/aneditablelist`}>An editable list</Link>
                         </li>
                     </ul>
                 </nav>

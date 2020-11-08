@@ -9,5 +9,5 @@ rjmonna.github.io
 ## Getting started
 
 Clone repository, add .env file with
-    API_URL=
+    APP_DIR=
 and run.
