@@ -1,8 +1,8 @@
 const path = require('path');
 const { CleanWebpackPlugin } =  require('clean-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
-const webpack = require('webpack')
-const dotenv = require('dotenv')
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 module.exports = () => {
   // call dotenv and it will return an Object with a parsed key 
@@ -32,26 +32,12 @@ module.exports = () => {
                 {test : /\.css$/, use:['style-loader', 'css-loader']}
             ]
         },
-        devtool : 'inline-source-map',
-        mode:'development',
         plugins : [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin ({
                 template : 'app/index.html'
             }),
             new webpack.DefinePlugin(envKeys)
-        ],
-        devServer: {
-            inline: true,
-            contentBase: path.join(__dirname, 'dist'),
-            compress: true,
-            port: 8080,
-            watchOptions: {
-                index: 'index.html',
-                open: true,
-                poll: true,
-                watchContentBase: true
-            }
-        }        
-    }
-}
+        ]       
+    };
+};

@@ -11,8 +11,8 @@
   },
   "scripts": {
     "create": "webpack",
-    "start": "webpack serve --mode development --config webpack.common.js",
-    "build": "webpack --config webpack.common.js",
+    "start": "webpack serve --mode development --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

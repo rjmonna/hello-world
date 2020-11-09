@@ -22,16 +22,16 @@ class AnEditableList extends React.Component{
     }
 
     handleAddItem(e) {
-        const data = this.state.items.data
+        const data = this.state.items.data;
 
-        data.push({id: data.length + 1, value: 'added'})
+        data.push({id: Math.max(data.map(i => i.id)) + 1, value: 'added'});
 
         this.setState({
             isLoaded: true,
             items: {
                 data: data
             }
-        })
+        });
     }
 
     handleSaveLocalStorage(e) {
@@ -46,7 +46,7 @@ class AnEditableList extends React.Component{
             items: {
                 data: JSON.parse(window.localStorage.getItem(this._anEditableListLocalStorageKey))
             }
-        })
+        });
     }
 
     handleChangeValue(e) {
@@ -63,7 +63,7 @@ class AnEditableList extends React.Component{
             items: {
                 data: data
             }
-        })
+        });
     }
 
     handleDelete(e) {
