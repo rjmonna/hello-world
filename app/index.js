@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import {
   HashRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from "react-router-dom"
 
-import About from './Components/About';
-import Home from './Components/Home';
-import Contact from './Components/Contact';
+import About from './Components/About'
+import Home from './Components/Home'
+import Contact from './Components/Contact'
 import Experiments from './Components/Experiments'
 
-import './index.css';
+import './index.css'
 
 class App extends React.Component{
     render(){

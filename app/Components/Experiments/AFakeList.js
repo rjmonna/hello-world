@@ -2,7 +2,7 @@ import React from 'react';
 
 class AFakeList extends React.Component{
     constructor(props) {
-        super(props);
+        super(props)
 
         this.numberOfItemsRef = React.createRef()
         this.typeRef = React.createRef()
@@ -13,11 +13,11 @@ class AFakeList extends React.Component{
             numberOfItems: 10,
             items: {},
             imageType: 'kittens'
-        };
+        }
     }
 
     componentDidMount() {
-        this.updateList();
+        this.updateList()
     }
 
     updateList() {
@@ -36,12 +36,12 @@ class AFakeList extends React.Component{
                         isLoaded: true
                     })
                 }
-            )};
+            )}
 
     handleChangeNumberOfItems(e) {
         this.setState({ numberOfItems: Number(e.target.value) },
             () => this.updateList()
-        );
+        )
     }
 
     handleChangeType(e) {
@@ -51,12 +51,12 @@ class AFakeList extends React.Component{
     }
 
     render(){
-        const { error, isLoaded, items, imageType } = this.state;
+        const { error, isLoaded, items, imageType } = this.state
 
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div>Error: {error.message}</div>
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div>Loading...</div>
         } else {
             return (
                 <React.Fragment>

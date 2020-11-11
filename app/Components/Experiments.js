@@ -5,8 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import AFakeList from './Experiments/AFakeList';
-import AnEditableList from './Experiments/AnEditableList';
+import AFakeList from './Experiments/AFakeList'
+import AnEditableList from './Experiments/AnEditableList'
+import ResizableGrid from './Experiments/ResizableGrid'
 
 class Experiments extends React.Component{
     render(){
@@ -16,10 +17,13 @@ class Experiments extends React.Component{
                     <ul>
                         <li>
                         <Link to={process.env.APP_DIR + `/experiments/afakelist`}>A fake list</Link>
-                        </li>
-                        <li>
+                    </li>
+                    <li>
                         <Link to={process.env.APP_DIR + `/experiments/aneditablelist`}>An editable list</Link>
-                        </li>
+                    </li>
+                    <li>
+                        <Link to={process.env.APP_DIR + `/experiments/resizablegrid`}>Resizable grid</Link>
+                    </li>
                     </ul>
                 </nav>
             <div>
@@ -30,6 +34,9 @@ class Experiments extends React.Component{
                     </Route>
                     <Route path={`/experiments/aneditablelist`}>
                         <AnEditableList />
+                    </Route>
+                    <Route path={`/experiments/resizablegrid`}>
+                        <ResizableGrid />
                     </Route>
                 </Switch>
             </div>
