@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import {
   HashRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from "react-router-dom"
 import AFakeList from './Experiments/AFakeList'
 import AnEditableList from './Experiments/AnEditableList'
 import ResizableGrid from './Experiments/ResizableGrid'
