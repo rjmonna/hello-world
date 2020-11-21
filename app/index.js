@@ -24,16 +24,16 @@ class App extends React.Component{
         <nav>
           <ul>
             <li>
-              <Link to={process.env.APP_DIR + "/"}>Home</Link>
+              <Link to={process.env.REACT_APP_URL + "/"}>Home</Link>
             </li>
             <li>
-              <Link to={process.env.APP_DIR + "/experiments"}>Experiments</Link>
+              <Link to={process.env.REACT_APP_URL + "/experiments"}>Experiments</Link>
             </li>
             <li>
-              <Link to={process.env.APP_DIR + "/about"}>About</Link>
+              <Link to={process.env.REACT_APP_URL + "/about"}>About</Link>
             </li>
             <li>
-              <Link to={process.env.APP_DIR + "/contact"}>Contact</Link>
+              <Link to={`${process.env.REACT_APP_URL}/contact`}>Contact</Link>
             </li>
           </ul>
         </nav>

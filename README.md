@@ -9,5 +9,5 @@ rjmonna.github.io
 ## Getting started
 
 Clone repository, add .env file with
-    APP_DIR=
+    REACT_APP_URL=
 and run.
