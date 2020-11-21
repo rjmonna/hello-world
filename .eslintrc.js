@@ -21,5 +21,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-    }
+    },
+    "jshint.enable": false
 };

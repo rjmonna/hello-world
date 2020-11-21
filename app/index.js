@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import {
   HashRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from "react-router-dom"
 
-import About from './Components/About';
-import Home from './Components/Home';
-import Contact from './Components/Contact';
+import About from './Components/About'
+import Home from './Components/Home'
+import Contact from './Components/Contact'
 import Experiments from './Components/Experiments'
 
-import './index.css';
+import './index.css'
 
 class App extends React.Component{
     render(){
@@ -24,16 +24,16 @@ class App extends React.Component{
         <nav>
           <ul>
             <li>
-              <Link to={process.env.API_URL + "/"}>Home</Link>
+              <Link to={process.env.REACT_APP_URL + "/"}>Home</Link>
             </li>
             <li>
-              <Link to={process.env.API_URL + "/experiments"}>Experiments</Link>
+              <Link to={process.env.REACT_APP_URL + "/experiments"}>Experiments</Link>
             </li>
             <li>
-              <Link to={process.env.API_URL + "/about"}>About</Link>
+              <Link to={process.env.REACT_APP_URL + "/about"}>About</Link>
             </li>
             <li>
-              <Link to={process.env.API_URL + "/contact"}>Contact</Link>
+              <Link to={`${process.env.REACT_APP_URL}/contact`}>Contact</Link>
             </li>
           </ul>
         </nav>
