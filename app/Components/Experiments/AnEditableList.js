@@ -24,7 +24,9 @@ class AnEditableList extends React.Component{
     handleAddItem(e) {
         const data = this.state.items.data
 
-        data.push({id: Math.max(data.map(i => i.id)) + 1, value: 'added'})
+        const dataToPush = {id: Math.max(...data.map(i => i.id)) + 1, value: 'added'}
+
+        data.push(dataToPush)
 
         this.setState({
             isLoaded: true,
@@ -52,7 +54,7 @@ class AnEditableList extends React.Component{
     handleChangeValue(e) {
         const data = this.state.items.data
 
-        const found = data.find((dataItem) => dataItem.id == e.target.key)
+        const found = data.find((dataItem) => dataItem.id == e.target.dataset.key)
 
         if (found) {
             found.value = e.target.value
@@ -69,7 +71,7 @@ class AnEditableList extends React.Component{
     handleDelete(e) {
         var data = this.state.items.data;
 
-        data = data.filter((currentValue) => currentValue.id != e.target.key)
+        data = data.filter((currentValue) => currentValue.id != e.target.dataset.key)
 
         this.setState({
             isLoaded: true,
@@ -93,7 +95,7 @@ class AnEditableList extends React.Component{
                     <br /><br />
                     <ul>
                         {items.data.map(item => (
-                            <li key={item.id}><input defaultValue={item.value} onChange={this.handleChangeValue.bind(this)}></input> <button onClick={this.handleDelete.bind(this)}>Remove</button></li>
+                            <li key={item.id}><input defaultValue={item.value} onChange={this.handleChangeValue.bind(this)}></input> <button data-key={item.id} onClick={this.handleDelete.bind(this)}>Remove</button></li>
                         ))}
                     </ul>
                 </React.Fragment>

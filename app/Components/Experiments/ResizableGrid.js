@@ -49,14 +49,14 @@ class ResizableGrid extends React.Component{
     handleSaveLocalStorage(e) {
         const data = this.state.items.data;
 
-        window.localStorage.setItem(this._anEditableListLocalStorageKey, JSON.stringify(data))
+        window.localStorage.setItem(this._resizableGridLocalStorageKey, JSON.stringify(data))
     }
 
     handleLoadLocalStorage(e) {
         this.setState({
             isLoaded: true,
             items: {
-                data: JSON.parse(window.localStorage.getItem(this._anEditableListLocalStorageKey))
+                data: JSON.parse(window.localStorage.getItem(this._resizableGridLocalStorageKey))
             }
         })
     }
@@ -78,13 +78,14 @@ class ResizableGrid extends React.Component{
                 <React.Fragment>
                     <button onClick={this.handleSaveLocalStorage.bind(this)}>Save localStorage</button> <button onClick={this.handleLoadLocalStorage.bind(this)}>Load localStorage</button>
                     <br/><br/>
-                    {options}
+                        {options}
+                    <br/>
                     {
                         [...Array(height).keys()].map((rowArray, rowIndex) => {
                             return(<React.Fragment key={rowIndex}>
                                 <div>
                                     {[...Array(width).keys()].map((columnArray, columnIndex) =>
-                                        <input key={columnIndex} defaultValue="a"></input>
+                                        <input key={columnIndex} defaultValue="test"></input>
                                     )}
                                 </div>
                             </React.Fragment>)

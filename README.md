@@ -10,4 +10,6 @@ rjmonna.github.io
 
 Clone repository, add .env file with
     REACT_APP_URL=
-and run.
+and run server at port 8080 with
+    npm start run
+or start debugging with Chrome.
