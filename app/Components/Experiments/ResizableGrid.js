@@ -18,6 +18,11 @@ class ResizableGrid extends React.Component{
             error: false,
             isLoaded: false
         }
+
+        this.handleSaveLocalStorage = this.handleSaveLocalStorage.bind(this)
+        this.handleLoadLocalStorage = this.handleLoadLocalStorage.bind(this)
+        this.handleUpdateHeight = this.handleUpdateHeight.bind(this)
+        this.handleUpdateWidth = this.handleUpdateWidth.bind(this)
     }
 
     componentDidMount() {
@@ -46,18 +51,16 @@ class ResizableGrid extends React.Component{
         }
     }
 
-    handleSaveLocalStorage(e) {
-        const data = this.state.items.data;
+    handleSaveLocalStorage() {
+        const data = this.state;
 
         window.localStorage.setItem(this._resizableGridLocalStorageKey, JSON.stringify(data))
     }
 
-    handleLoadLocalStorage(e) {
+    handleLoadLocalStorage() {
         this.setState({
             isLoaded: true,
-            items: {
-                data: JSON.parse(window.localStorage.getItem(this._resizableGridLocalStorageKey))
-            }
+            ...JSON.parse(window.localStorage.getItem(this._resizableGridLocalStorageKey))
         })
     }
 
@@ -65,8 +68,8 @@ class ResizableGrid extends React.Component{
         const { height, width, error, isLoaded } = this.state
 
         var options = <div>
-                        <label htmlFor="height">Height</label><input id="height" defaultValue="1" ref={this.heightRef} onChange={this.handleUpdateHeight.bind(this)}></input><br />
-                        <label htmlFor="width">Width</label><input id="width" defaultValue="1" ref={this.widthRef} onChange={this.handleUpdateWidth.bind(this)}></input>
+                        <label htmlFor="height">Height</label><input id="height" defaultValue="1" ref={this.heightRef} onChange={this.handleUpdateHeight}></input><br />
+                        <label htmlFor="width">Width</label><input id="width" defaultValue="1" ref={this.widthRef} onChange={this.handleUpdateWidth}></input>
                     </div>
 
         if (error) {
@@ -76,7 +79,7 @@ class ResizableGrid extends React.Component{
         } else {
             return (
                 <React.Fragment>
-                    <button onClick={this.handleSaveLocalStorage.bind(this)}>Save localStorage</button> <button onClick={this.handleLoadLocalStorage.bind(this)}>Load localStorage</button>
+                    <button onClick={this.handleSaveLocalStorage}>Save localStorage</button> <button onClick={this.handleLoadLocalStorage}>Load localStorage</button>
                     <br/><br/>
                         {options}
                     <br/>

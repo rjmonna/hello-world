@@ -14,6 +14,9 @@ class AFakeList extends React.Component{
             items: {},
             imageType: 'kittens'
         }
+
+        this.handleChangeNumberOfItems = this.handleChangeNumberOfItems.bind(this)
+        this.handleChangeType = this.handleChangeType.bind(this)
     }
 
     componentDidMount() {
@@ -61,10 +64,10 @@ class AFakeList extends React.Component{
             return (
                 <React.Fragment>
                     <label htmlFor="numberOfItems">Number of items</label>
-                    <input name="numberOfItems" ref={this.numberOfItemsRef} defaultValue="10" onChange={this.handleChangeNumberOfItems.bind(this)}></input>
+                    <input name="numberOfItems" ref={this.numberOfItemsRef} defaultValue="10" onChange={this.handleChangeNumberOfItems}></input>
                     <br /><br />
                     <label htmlFor="type">Type</label>
-                    <select name="type" ref={this.typeRef} defaultValue={imageType} onChange={this.handleChangeType.bind(this)}>
+                    <select name="type" ref={this.typeRef} defaultValue={imageType} onChange={this.handleChangeType}>
                         <option value="any">Any</option>
                         <option value="animals">Animals</option>
                         <option value="architecture">Architecture</option>
