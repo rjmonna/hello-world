@@ -12,6 +12,12 @@ class AnEditableList extends React.Component{
             isLoaded: false,
             items: {}
         }
+
+        this.handleSaveLocalStorage = this.handleSaveLocalStorage.bind(this)
+        this.handleLoadLocalStorage = this.handleLoadLocalStorage.bind(this)
+        this.handleChangeValue = this.handleChangeValue.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
+        this.handleAddItem = this.handleAddItem.bind(this)
     }
 
     componentDidMount() {
@@ -21,10 +27,12 @@ class AnEditableList extends React.Component{
         })
     }
 
-    handleAddItem(e) {
+    handleAddItem() {
         const data = this.state.items.data
 
-        data.push({id: Math.max(data.map(i => i.id)) + 1, value: 'added'})
+        const dataToPush = {id: Math.max(...data.map(i => i.id)) + 1, value: 'added'}
+
+        data.push(dataToPush)
 
         this.setState({
             isLoaded: true,
@@ -34,13 +42,13 @@ class AnEditableList extends React.Component{
         })
     }
 
-    handleSaveLocalStorage(e) {
+    handleSaveLocalStorage() {
         const data = this.state.items.data;
 
         window.localStorage.setItem(this._anEditableListLocalStorageKey, JSON.stringify(data))
     }
 
-    handleLoadLocalStorage(e){
+    handleLoadLocalStorage(){
         this.setState({
             isLoaded: true,
             items: {
@@ -52,7 +60,7 @@ class AnEditableList extends React.Component{
     handleChangeValue(e) {
         const data = this.state.items.data
 
-        const found = data.find((dataItem) => dataItem.id == e.target.key)
+        const found = data.find((dataItem) => dataItem.id == e.target.dataset.key)
 
         if (found) {
             found.value = e.target.value
@@ -69,7 +77,7 @@ class AnEditableList extends React.Component{
     handleDelete(e) {
         var data = this.state.items.data;
 
-        data = data.filter((currentValue) => currentValue.id != e.target.key)
+        data = data.filter((currentValue) => currentValue.id != e.target.dataset.key)
 
         this.setState({
             isLoaded: true,
@@ -89,11 +97,11 @@ class AnEditableList extends React.Component{
         } else {
             return (
                 <React.Fragment>
-                    <button onClick={this.handleAddItem.bind(this)}>Add</button> <button onClick={this.handleSaveLocalStorage.bind(this)}>Save localStorage</button> <button onClick={this.handleLoadLocalStorage.bind(this)}>Load localStorage</button>
+                    <button onClick={this.handleAddItem}>Add</button> <button onClick={this.handleSaveLocalStorage}>Save localStorage</button> <button onClick={this.handleLoadLocalStorage}>Load localStorage</button>
                     <br /><br />
                     <ul>
                         {items.data.map(item => (
-                            <li key={item.id}><input defaultValue={item.value} onChange={this.handleChangeValue.bind(this)}></input> <button onClick={this.handleDelete.bind(this)}>Remove</button></li>
+                            <li key={item.id}><input data-key={item.id} defaultValue={item.value} onChange={this.handleChangeValue}></input> <button data-key={item.id} onClick={this.handleDelete}>Remove</button></li>
                         ))}
                     </ul>
                 </React.Fragment>

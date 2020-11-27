@@ -1,3 +1,4 @@
 {
-    "debug.javascript.usePreview": false
+    "debug.javascript.usePreview": false,
+    "jshint.enable": false
 }
